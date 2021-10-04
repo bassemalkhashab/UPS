@@ -1,6 +1,11 @@
+#UPS information system
+
+```
+This is a web app used to record a number of shipped items using an item number and some extra information about it to deliver each item to its destination which is retail center using an unique ID and extra information about the retail center. It also, records the transportation method which can be more than one for each item using schedule number and extra information about the transportation method.
+```
 *Note: I'm using an online bootstrap linking so make sure that there is an internet connection*
 
-# The web app consists of 5 sections
+## The web app consists of 5 sections
 
 1. Home page
 2. Shipped items page
@@ -35,7 +40,7 @@
 > After all relations is added dashboard at the home page will be updated.
 
 
-### To start the app
+## To start the app
 1. Make sure that you have laravel installed on you machine.
 2. configure the `.env` file to connect to your data base.
 3. Run ``` php artisan migrate ``` to create all tables needed.
