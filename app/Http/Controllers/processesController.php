@@ -44,7 +44,7 @@ class processesController extends Controller
             return redirect()->back()->with('success', 'Data entered');
         }
         // if retail center id found return a message id already existing
-        return redirect()->back()->with('failure', 'A Retail center ID already existing!');
+        return redirect()->back()->with('failure', 'Data already existing!');
     }
 
     // Add a relation between a shipped item and a transportation event
