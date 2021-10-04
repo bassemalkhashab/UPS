@@ -28,7 +28,7 @@ class processesController extends Controller
         if(sizeof($shippedItems) == 0){
             return redirect()->back()->with('failure', 'Shipped item not found!');
         }
-        
+
         $checkValue = ShippedItems::where('itemNumber', $request->itemNumber)->firstOrFail();
 
         // Check if entered retail center ID is found in the database
@@ -71,7 +71,7 @@ class processesController extends Controller
 
         // Check if entered transportation event ID is found in the database
         if(sizeof($transportationEvents) == 0){
-            return redirect()->back()->with('failure', 'Transportation event not found!');
+            return redirect()->back()->with('failure', 'Transportation method not found!');
         }
 
         $shipping = new Shipping;
