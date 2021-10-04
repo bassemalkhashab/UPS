@@ -21,20 +21,13 @@
 
         </ul>
     </nav>
-    <div class="d-flex vh-100">
+    <div class="w-50 m-auto p-5">
+        @include('includes.validation')
+    </div>
+    <div class="d-flex">
         <div class="w-25 m-auto p-5">
             <!-- Output the result of form validations over the first form -->
-            @if(session()->has('success1'))
-            <div class="alert alert-success" role="alert">
-                {{session()->get('success1')}}
-            </div>
-            @endif
-
-            @if(session()->has('failure1'))
-            <div class="alert alert-danger" role="alert">
-                {{session()->get('failure1')}}
-            </div>
-            @endif
+           
             <form method="post" action="/processes/receivedAt" class="row g-3 p-3">
                 @csrf
                 <h3>Retail center</h3>
@@ -53,11 +46,7 @@
         </div>
         <div class="w-25 m-auto p-5">
             <!-- Output the result of form validations over the second form -->
-            @if(session()->has('success2'))
-            <div class="alert alert-success" role="alert">
-                {{session()->get('success2')}}
-            </div>
-            @endif
+            
             <form method="post" action="/processes/transportationMethod" class="row g-3 p-3">
                 @csrf
                 <h3>Transportation event</h3>
