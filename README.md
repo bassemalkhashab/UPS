@@ -1,7 +1,8 @@
 # UPS information system
 
 ```
-This is a web app used to record a number of shipped items using an item number and some extra information about it to deliver each item to its destination which is retail center using an unique ID and extra information about the retail center. It also, records the transportation method which can be more than one for each item using schedule number and extra information about the transportation method.
+This is a web app used to record a number of shipped items using an item number and some extra information about it to deliver each item to its destination which is retail center using an unique ID and extra information about the retail center. 
+It also, records the transportation method which can be more than one for each item using schedule number and extra information about the transportation method.
 ```
 *Note: I'm using an online bootstrap linking so make sure that there is an internet connection*
 
