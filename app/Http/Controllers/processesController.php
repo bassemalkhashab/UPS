@@ -23,12 +23,13 @@ class processesController extends Controller
     {
         $shippedItems = ShippedItems::where('itemNumber', $request->itemNumber)->get();
         $retailCenters = RetailCenter::where('uniqueID', $request->uniqueID)->get();
-        $checkValue = ShippedItems::where('itemNumber', $request->itemNumber)->firstOrFail();
-
+        
         // Check if entered shipped item ID is found in the database
         if(sizeof($shippedItems) == 0){
             return redirect()->back()->with('failure', 'Shipped item not found!');
         }
+        
+        $checkValue = ShippedItems::where('itemNumber', $request->itemNumber)->firstOrFail();
 
         // Check if entered retail center ID is found in the database
         if(sizeof($retailCenters) == 0){
