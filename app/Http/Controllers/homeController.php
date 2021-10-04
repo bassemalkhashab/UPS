@@ -13,6 +13,7 @@ class homeController extends Controller
         
         $shippedItems = ShippedItems::select('shipped_items.itemNumber', 'shipped_items.uniqueID', 'shippings.scheduleNumber')
         ->leftJoin('shippings', 'shipped_items.itemNumber', '=', 'shippings.itemNumber')
+        ->orderBy('shipped_items.itemNumber')
         ->get();
         // return dd($shippedItems);
         return view('home', compact('shippedItems'));
