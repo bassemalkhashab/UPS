@@ -44,7 +44,7 @@ and extra information about the transportation method.
 > After all relations is added dashboard at the home page will be updated.
 
 
-## To start the app
+## **To start the app**
 1. Make sure that you have laravel installed on you machine.
 2. configure the `.env` file to connect to your data base.
 3. Run ``` php artisan migrate ``` to create all tables needed.
