@@ -21,7 +21,18 @@ class processesController extends Controller
     // Add a relation between a shipped item and a retail center
     public function receivedAtProcesses(retailCenterRequest $request)
     {
+        $shippedItems = ShippedItems::where('itemNumber', $request->itemNumber)->get();
+        $retailCenters = RetailCenter::where('uniqueID', $request->uniqueID)->get();
         $checkValue = ShippedItems::where('itemNumber', $request->itemNumber)->firstOrFail();
+
+        if(sizeof($shippedItems) == 0){
+            return redirect()->back()->with('failure', 'Shipped item not found!');
+        }
+
+        if(sizeof($retailCenters) == 0){
+            return redirect()->back()->with('failure', 'Retail center not found!');
+        }
+
         // Check if retail center unique id is found in shipped items table
         if (!$checkValue->uniqueID) {
             // if no retail center id found add the one that came with request
@@ -37,10 +48,11 @@ class processesController extends Controller
     // Add a relation between a shipped item and a transportation event
     public function transportationMethodProcesses(transportationEventRequest $request)
     {
-        $shippedItems = ShippedItems::where('itemNumber', $request->itemNumber)->firstOrFail();
-        $transportationEvents = TransportationEvent::where('scheduleNumber', $request->scheduleNumber)->firstOrFail();
+        $shippedItems = ShippedItems::where('itemNumber', $request->itemNumber)->get();
+        $transportationEvents = TransportationEvent::where('scheduleNumber', $request->scheduleNumber)->get();
         $shipping = Shipping::where('itemNumber', $request->itemNumber)->get();
 
+        // Check if data is already existing
         if ($shipping){
             foreach($shipping as $shippingItem){
                 if ($request->scheduleNumber == $shippingItem->scheduleNumber) {
@@ -49,6 +61,13 @@ class processesController extends Controller
             }
         }
         
+        if(sizeof($shippedItems)== 0){
+            return redirect()->back()->with('failure', 'Shipped item not found!');
+        }
+
+        if(sizeof($transportationEvents) == 0){
+            return redirect()->back()->with('failure', 'Transportation event not found!');
+        }
 
         $shipping = new Shipping;
         $shipping->itemNumber = $request->itemNumber;
