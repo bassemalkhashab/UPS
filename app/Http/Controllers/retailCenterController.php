@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 class retailCenterController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     // Display all retail centers on a table
     public function displayRetailCenter()
     {

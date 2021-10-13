@@ -11,6 +11,11 @@ use App\Http\Requests\updateShippedItems;  // Server side validation for updatin
 class ShippedItemsController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     // return all shipped items with all details
     public function displayShippedItems()
     {

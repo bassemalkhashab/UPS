@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class transportationEventController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     // Return all data about transportation event to a table
     public function displayTransportationEvent()
     {

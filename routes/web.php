@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ShippedItemsController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\loginController;
 use App\Http\Controllers\processesController;
 use App\Http\Controllers\retailCenterController;
 use App\Http\Controllers\transportationEventController;
@@ -90,3 +91,13 @@ Route::get('/home/delete/uniqueID/{uniqueID}/itemNumber/{itemNumber}', [homeCont
 
 // To remove transportation event ID from shipped items
 Route::get('/home/delete/scheduleNumber/{scheduleNumber}/itemNumber/{itemNumber}', [homeController::class, 'deleteScheduleNumber']);
+
+Route::get('/login', [loginController::class, 'loginPage'])-> middleware('guest');
+
+Route::post('/login', [loginController::class, 'login'])->name('login');
+
+Route::post('/logout', [loginController::class, 'logout']);
+
+Route::get('/sign-up', [loginController::class, 'signUpPage']);
+
+Route::post('/sign-up', [loginController::class, 'createAccount']);

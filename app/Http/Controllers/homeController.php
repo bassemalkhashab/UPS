@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class homeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     // Send data with all relations to the home page
     public function displayHomePage(){
         
