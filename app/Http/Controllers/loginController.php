@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\createAccount;
+use App\Http\Requests\login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,7 @@ class loginController extends Controller
         return redirect()->back()->with('failure', 'Password mismatching');
     }
 
-    public function login(Request $request)
+    public function login(login $request)
     {
 
         if (Auth::attempt([
