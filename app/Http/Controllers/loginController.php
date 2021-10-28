@@ -25,6 +25,9 @@ class loginController extends Controller
     {
         if ($request->password == $request->reenterPassword) {
             $user = new Users;
+            
+            $user->firstName = $request->firstName;
+            $user->lastName = $request->lastName;
             $user->username = $request->username;
             $user->password = Hash::make($request->password);
             $user->save();

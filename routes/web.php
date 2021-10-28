@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 // Home page
 Route::get('/', [homeController::class, 'displayHomePage']);
 
+Route::get('/filter/{uniqueID}', [homeController::class, 'filterByRetailCenter']);
+
 // Shipped items display page
 Route::get('/shipped-items', [ShippedItemsController::class, 'displayShippedItems']);
 
@@ -79,6 +81,14 @@ Route::post('/transportation-event/update/{scheduleNumber}/submit', [transportat
 
 // Route to processes page
 Route::get('/processes', [processesController::class, 'displayProcesses']);
+
+Route::post('/processes', [processesController::class, 'searchItem']);
+
+Route::post('/processes/{itemNumber}', [processesController::class, 'processes']);
+
+Route::get('/processes/checked-items', [processesController::class, 'checkedItems']);
+
+Route::get('/processes/selected-items', [processesController::class, 'selectedItems']);
 
 // sumbit shipped items retail center form
 Route::post('/processes/receivedAt', [processesController::class, 'receivedAtProcesses']);

@@ -26,6 +26,7 @@ class updateShippedItems extends FormRequest
         return [
             
             'weight' => 'required|integer',
+            'itemName' => 'required|string',
             'dimension' => 'required|string',
             'insuranceAmount' => 'required|integer',
             'destination' => 'required|string',

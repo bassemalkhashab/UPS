@@ -11,6 +11,7 @@
         <thead>
             <tr>
                 <th>Item number</th>
+                <th>Item name</th>
                 <th>Weight</th>
                 <th>Dimensions</th>
                 <th>Insurance amount</th>
@@ -24,6 +25,7 @@
             @foreach($shippedItem as $item)
             <tr>
                         <td>{{$item->itemNumber}}</td>
+                        <td>{{$item->itemName}}</td>
                         <td>{{$item->weight}}</td>
                         <td>{{$item->dimensions}}</td>
                         <td>{{$item->insuranceAmount}}</td>

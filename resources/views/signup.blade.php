@@ -22,10 +22,20 @@
     </div>
     <form class="w-25 vh-100 m-auto pt-5" method="post" action="/sign-up">
         @csrf
+        <div class="form-row d-flex justify-content-between">
+            <div class="form-group col-md-6" style="width: 11em;">
+                <label for="exampleInputEmail1" class="form-label">First name</label>
+                <input type="text" class="form-control" name="firstName">
+            </div>
+            <div class="form-group col-md-6" style="width: 11em;">
+                <label for="exampleInputEmail1" class="form-label">Last name</label>
+                <input type="text" class="form-control" name="lastName">
+            </div>
+        </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
-            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>

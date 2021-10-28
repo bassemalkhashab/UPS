@@ -24,6 +24,8 @@ class createAccount extends FormRequest
     public function rules()
     {
         return [
+            'firstName'=> 'required|string',
+            'lastName'=> 'required|string',
             'username' => 'required|email|unique:users',
             'password' => 'required|string'
         ];

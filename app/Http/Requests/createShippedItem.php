@@ -27,6 +27,8 @@ class createShippedItem extends FormRequest
 
             'itemNumber'=> 'required|integer|unique:Shipped_items',
             'weight' => 'required|integer',
+            'itemName' => 'required|string',
+    
             'dimension' => 'required|string',
             'insuranceAmount' => 'required|integer',
             'destination' => 'required|string',

@@ -22,6 +22,8 @@ class CreateRetailCentersTable extends Migration
 
         Schema::create('shipped_items', function (Blueprint $table) {
             $table->id('itemNumber');
+            $table->string('itemName');
+            $table->string('image');
             $table->integer('weight');
             $table->string('dimensions');
             $table->integer('insuranceAmount');

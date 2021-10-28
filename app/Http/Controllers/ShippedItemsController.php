@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Contracts\Service\Attribute\Required;
 use App\Http\Requests\createShippedItem;  // Server side validation for submitting new shipped items
 use App\Http\Requests\updateShippedItems;  // Server side validation for updating an existing shipped item
+use Illuminate\Support\Facades\Storage;
 
 class ShippedItemsController extends Controller
 {
@@ -32,7 +33,15 @@ class ShippedItemsController extends Controller
     // Insert new shipped item
     public function submitShippedItems(createShippedItem $request)
     {
-
+        if ($request->file('image')) {
+            $image = $request->file('image')->store('public');
+            $image = explode('/', $image);
+            $image = $image[1];
+        }
+        else{
+            $image = "cumuluc_cube_8965.jpg";
+        }
+        $itemName = $request->itemName;
         $itemNumber = $request->itemNumber;
         $weight = $request->weight;
         $dimension = $request->dimension;
@@ -41,6 +50,8 @@ class ShippedItemsController extends Controller
         $finalDeliveryDate = $request->finalDeliveryDate;
         $shippedItem = new ShippedItems;
         $shippedItem->itemNumber = $itemNumber;
+        $shippedItem->image = $image;
+        $shippedItem->itemName = $itemName;
         $shippedItem->weight = $weight;
         $shippedItem->dimensions = $dimension;
         $shippedItem->insuranceAmount = $insuranceAmount;
@@ -72,9 +83,18 @@ class ShippedItemsController extends Controller
     // updating an existing shipped item
     public function updateShippedItem(updateShippedItems $request, $itemNumber)
     {
+        if ($request->file('image')) {
+            $image = $request->file('image')->store('public');
+            $image = explode('/', $image);
+            $image = $image[1];
+            ShippedItems::firstOrFail()->where('itemNumber', $itemNumber)->update([
+                'image' => $image
+            ]);
+        }
 
         ShippedItems::firstOrFail()->where('itemNumber', $itemNumber)->update([
             'itemNumber' => $itemNumber,
+            'itemName' => $request->itemName,
             'weight' => $request->weight,
             'dimensions' => $request->dimension,
             'insuranceAmount' => $request->insuranceAmount,
